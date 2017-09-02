@@ -14,6 +14,13 @@ Template.book.helpers({
     } else {
       return "Donated"
     }
+  },
+  sameUser() {
+    if (Meteor.userId() != this.owner) {
+      return false
+    } else {
+      return true
+    }
   }
 })
 Template.book.events({
@@ -38,4 +45,15 @@ Template.book.events({
     console.log(this.owner == Meteor.userId());
     // Meteor.call('books.donated', this._id, ! this.donate);
   }
-})
+});
+
+// Template.registerHelper('truncate', function(passedString, num) {
+//     var fooText = passedString.substring(0,40); //same as truncate.
+//     if (fooText < 40) {
+//       return
+//
+//     } else {
+//
+//       return new Spacebars.SafeString(fooText) + " ..."
+//     }
+// });
