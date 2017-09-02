@@ -21,6 +21,9 @@ Template.book.helpers({
     } else {
       return true
     }
+  },
+  baseDir() {
+    console.log('~/public/');
   }
 })
 Template.book.events({
@@ -44,9 +47,26 @@ Template.book.events({
     console.log(this.owner + " : " + Meteor.userId());
     console.log(this.owner == Meteor.userId());
     // Meteor.call('books.donated', this._id, ! this.donate);
-  }
+  },
+
 });
 
+
+Template.newBook.events({
+  'submit .new-book'(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    const title = target.title.value;
+    const description = target.description.value;
+
+    Meteor.call('books.insert', title, description);
+
+    target.title.value = "";
+    target.description.value = "";
+    FlowRouter.go('homePage');
+  }
+})
 // Template.registerHelper('truncate', function(passedString, num) {
 //     var fooText = passedString.substring(0,40); //same as truncate.
 //     if (fooText < 40) {

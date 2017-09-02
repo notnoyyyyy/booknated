@@ -11,21 +11,6 @@
   </body>
 </template>
 
-<template name="header">
-  <header>
-    <!-- <h1>Book List ({{ bookCount }})</h1> -->
-    {{#if currentUser}}
-    <form class="new-book">
-      <label>Name :</label>
-      <input type="text" name="title" placeholder="Enter book name" /><br>
-      <label>Description :</label><br>
-      <textarea name="description" rows="8" cols="80" placeholder="Enter description ..."></textarea>
-      <br>
-      <input type="submit">
-    </form>
-    {{/if}}
-  </header>
-</template>
 <template name="main">
   <div class="row">
     {{#each books}}

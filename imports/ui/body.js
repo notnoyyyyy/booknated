@@ -25,18 +25,3 @@ Template.main.helpers({
   }
 
 })
-Template.main.events({
-
-  'submit .new-book'(event) {
-    event.preventDefault();
-
-    const target = event.target;
-    const title = target.title.value;
-    const description = target.description.value;
-
-    Meteor.call('books.insert', title, description);
-
-    target.title.value = "";
-    target.description.value = "";
-  }
-})
