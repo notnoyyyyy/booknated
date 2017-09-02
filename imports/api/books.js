@@ -4,6 +4,12 @@ import { check } from 'meteor/check';
 
 export const Books = new Mongo.Collection('books');
 
+if (Meteor.isServer) {
+  Meteor.publish('books', function booksPublication() {
+    return Books.find();
+  })
+}
+
 Meteor.methods({
   'books.insert'(title, description) {
     check(title, String)

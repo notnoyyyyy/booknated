@@ -6,6 +6,10 @@ import { Books } from '../api/books.js';
 import './book.js';
 import './body.html';
 
+Template.body.onCreated(function bodyOnCreated() {
+  Meteor.subscribe('books');
+})
+
 Template.body.helpers({
   books() {
     return Books.find( {}, {sort: { createdAt: -1}} );
