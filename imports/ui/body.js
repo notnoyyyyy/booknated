@@ -4,6 +4,7 @@ import { Template } from 'meteor/templating';
 import { Books } from '../api/books.js';
 
 import './components/books/book.js';
+import './components/users/user.js';
 import './body.html';
 
 // Import partials
