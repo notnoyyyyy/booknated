@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 
 import { Books } from '../api/books.js';
 
-import './book.js';
+import './components/books/book.js';
 import './body.html';
 
 // Import partials
@@ -12,6 +12,7 @@ import './partials.js';
 Template.body.onCreated(function bodyOnCreated() {
   Meteor.subscribe('books');
 })
+
 
 Template.main.helpers({
   books() {

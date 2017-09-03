@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 
-import { Books } from '../api/books.js';
+import { Books } from '../../../api/books.js';
 
 import './book.html';
 
@@ -21,9 +21,12 @@ Template.book.helpers({
     } else {
       return true
     }
-  },
-  baseDir() {
-    console.log('~/public/');
+  }
+})
+
+Template.bookDetail.helpers({
+  'book'() {
+    return Books.findOne({_id: FlowRouter.getParam('bookId')});
   }
 })
 Template.book.events({
@@ -67,13 +70,3 @@ Template.newBook.events({
     FlowRouter.go('homePage');
   }
 })
-// Template.registerHelper('truncate', function(passedString, num) {
-//     var fooText = passedString.substring(0,40); //same as truncate.
-//     if (fooText < 40) {
-//       return
-//
-//     } else {
-//
-//       return new Spacebars.SafeString(fooText) + " ..."
-//     }
-// });
