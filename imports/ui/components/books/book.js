@@ -4,6 +4,22 @@ import { Books } from '../../../api/books.js';
 
 import './book.html';
 
+Template.books.onCreated(function booksOnCreated() {
+  Meteor.subscribe('books');
+})
+
+Template.books.helpers({
+  books() {
+    return Books.find( {}, {sort: { createdAt: -1}} );
+  },
+  bookCount() {
+    return Books.find({ donate: { $ne: !false } }).count();
+  },
+  errorMessage() {
+    return Session.get("errorMessage");
+  }
+})
+
 Template.book.helpers({
   formatDate() {
     return moment(this.createdAt).format('MMMM Do YYYY, h:mm:ss a');

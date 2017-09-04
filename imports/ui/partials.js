@@ -1,1 +1,1 @@
-import './partials/navigationBar.html';
+import './partials/navigation.js';

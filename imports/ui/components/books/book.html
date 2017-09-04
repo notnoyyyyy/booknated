@@ -1,3 +1,12 @@
+<template name="books">
+  <div class="row">
+    {{#each books}}
+      {{> book}}
+    {{/each}}
+
+  </div>
+</template>
+
 <template name="book">
   <div class="col-4">
     <div class="card" style="width: 20rem;">
@@ -32,6 +41,9 @@
 
 
 <template name="bookDetail">
-  <h1>{{book.title}}</h1>
-  <p>{{book.donateNow}}</p>
+  <div class="row">
+    <h1>{{book.title}}</h1>
+    <p>{{book.donateNow}}</p>
+
+  </div>
 </template>
